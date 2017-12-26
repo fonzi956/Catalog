@@ -348,7 +348,7 @@ def deleteItem(catalog_name, item_name):
     if not return back to home page
     """
     itemToDelete = session.query(Item).filter_by(name=item_name).one_or_none()
-    if editedItem.user_id != login_session['user_id']:
+    if itemToDelete.user_id != login_session['user_id']:
         flash('You are not authorized to edit this item.')
         return redirect('/')
     if request.method == 'POST':
