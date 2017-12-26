@@ -318,8 +318,8 @@ def editItem(catalog_name, item_name):
     """
     editedItem = session.query(Item).filter_by(name=item_name).one_or_none()
     if editedItem.user_id != login_session['user_id']:
-    flash('You are not authorized to edit this item.')
-    return redirect('/')
+        flash('You are not authorized to edit this item.')
+        return redirect('/')
     if request.method == 'POST':
         if request.form['name']:
             editedItem.name = request.form['name']
